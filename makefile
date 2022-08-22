@@ -1,7 +1,7 @@
 build:
-	@docker pull jenkins/jenkins:latest
+	@docker build -t myjenkins .
 run:
-	@docker run -p 8080:8080 --name=jenkins-master -d --env JAVA_OPTS="-Xmx8192m" --env JENKINS_OPTS="--handlerCountMax=300" jenkins/jenkins:2.112
+	@docker run -p 8080:8080 -p 50000:50000 --name=jenkins-master -d myjenkins
 start:
 	@docker start jenkins-master
 stop:
